@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="0;url=lobby.html">
+    <title>Redirection vers le lobby</title>
+</head>
+<body>
+    <div class="container">
+        <!-- Phase 1 : Aperçu vidéo -->
+        <div id="phase1">
+            <h1>Jeu d'Imitation</h1>
+            <div class="video-preview">
+                <video id="previewVideo" controls>
+                    <source src="video.mp4" type="video/mp4">
+                    Votre navigateur ne supporte pas la vidéo.
+                </video>
+                <div class="soundwave" id="soundwavePreview">
+                    <canvas id="waveformCanvas" width="480" height="60" style="width:100%;height:60px;"></canvas>
+                </div>
+            </div>
+            <button id="continueBtn">Continuer</button>
+        </div>
+        <!-- Phase 2 : Enregistrement -->
+        <div id="phase2" style="display:none;">
+            <h1>Imite la vidéo !</h1>
+            <div class="video-preview">
+                <video id="gameVideo" controls muted>
+                    <source src="video.mp4" type="video/mp4">
+                    Votre navigateur ne supporte pas la vidéo.
+                </video>
+                <div class="soundwave" id="soundwaveGame"></div>
+            </div>
+            <div class="record-section">
+                <button id="recordBtn">Enregistrer votre imitation</button>
+                <button id="validateBtn" style="display:none;background:linear-gradient(135deg,#4ffca3 0%,#2dd4bf 100%);color:#fff;margin-left:8px;">Valider</button>
+                <div class="soundwave" id="soundwaveRecord"></div>
+            </div>
+            <div id="playbackSection" style="display:none;text-align:center;">
+                <h2>Prévisualisation</h2>
+                <div class="video-preview">
+                    <video id="previewGameVideo" muted style="width:420px;max-width:100%;border-radius:10px;box-shadow:0 2px 12px rgba(60,30,120,0.18);">
+                        <source src="video.mp4" type="video/mp4">
+                    </video>
+                    <div class="soundwave" id="soundwavePlayback"></div>
+                </div>
+                <button id="submitBtn" style="background:linear-gradient(135deg,#7a8cff 0%,#4f8cff 100%);color:#fff;margin-top:16px;">Envoyer sa participation</button>
+            </div>
+        </div>
+    </div>    <script src="/socket.io/socket.io.js"></script>
+    <script src="script.js" type="module"></script>
+</body>
+</html>

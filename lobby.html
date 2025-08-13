@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Jeu d'imitation - Lobby</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="lobby" class="lobby-container">
+        <h1>Jeu d'imitation</h1>        <div id="playerSetup" class="player-setup">
+            <input type="text" id="nameInput" placeholder="Entrez votre nom">
+            <button id="createGame">Créer une partie</button>
+            <div class="join-game-section" style="width: 100%; text-align: center; margin-top: 20px;">
+                <input type="text" id="gameCodeInput" placeholder="Code de la partie" style="display: none;">
+                <button id="joinGame">Rejoindre une partie</button>
+            </div>
+        </div>
+        <div id="gameRoom" class="game-room" style="display: none;">
+            <div class="game-code" style="text-align: center; margin-bottom: 20px; color: white;">
+                Code de la partie: <span id="gameCodeDisplay"></span>
+            </div>
+            <h2>Salle d'attente</h2>
+            <div id="playerList" class="player-list">
+                <!-- Liste des joueurs -->
+            </div>
+            <button id="startGame" style="display: none;">Commencer la partie</button>
+        </div>
+    </div>
+      <div id="game" style="display: none;">
+        <!-- Phase 1 : Aperçu vidéo -->
+        <div id="phase1">
+            <h1>Jeu d'Imitation</h1>
+            <div class="video-preview">
+                <video id="previewVideo" controls>
+                    <source src="video.mp4" type="video/mp4">
+                    Votre navigateur ne supporte pas la vidéo.
+                </video>
+                <div class="soundwave" id="soundwavePreview">
+                    <canvas id="waveformCanvas" width="480" height="60" style="width:100%;height:60px;"></canvas>
+                </div>
+            </div>
+            <button id="continueBtn">Continuer</button>
+        </div>
+
+        <!-- Phase 2 : Enregistrement -->
+        <div id="phase2" style="display: none;">
+            <h1>À vous de jouer !</h1>
+            <div class="video-preview">
+                <video id="gameVideo" style="display: none;">
+                    <source src="video.mp4" type="video/mp4">
+                </video>
+                <div class="soundwave" id="soundwaveGame"></div>
+                <div class="soundwave" id="soundwaveRecord"></div>
+            </div>
+            <div class="record-section">
+                <button id="recordBtn">Enregistrer</button>
+            </div>
+            <div id="playbackSection" style="display: none;">
+                <video id="previewGameVideo" controls>
+                    <source src="video.mp4" type="video/mp4">
+                </video>
+                <div id="soundwavePlayback"></div>
+                <button id="submitBtn">Valider</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="votingPhase" class="voting-phase" style="display: none;">
+        <div class="current-player">
+            <h2>Imitation de <span id="currentPlayerName"></span></h2>
+            <div id="playerImitation">
+                <!-- Player video and audio will be here -->
+            </div>
+        </div>
+        <div class="voting-buttons">
+            <button id="dislikeBtn" class="vote-btn dislike">👎</button>
+            <button id="likeBtn" class="vote-btn like">👍</button>
+            <button id="superlikeBtn" class="vote-btn superlike">🌟</button>
+        </div>
+        <div class="scoreboard">
+            <h3>Scores</h3>
+            <div id="scoreList"></div>
+        </div>
+    </div>    <script src="/socket.io/socket.io.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
