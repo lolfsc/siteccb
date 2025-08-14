@@ -82,9 +82,15 @@ io.on('connection', (socket) => {
         console.log(`${playerName} joined the game`);
     });
 
-    socket.on('startGame', () => {
-        io.to('game').emit('gameStarted');
-        console.log('Game started');
+    socket.on('startGame', (gameCode) => {
+        const game = games.get(gameCode);
+        if (!game || game.host !== socket.id) {
+            socket.emit('error', 'Vous n\'avez pas la permission de démarrer la partie');
+            return;
+        }
+        
+        io.to(gameCode).emit('gameStarted');
+        console.log(`Game ${gameCode} started`);
     });
 
     socket.on('imitationComplete', (data) => {

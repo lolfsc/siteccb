@@ -1,0 +1,110 @@
+#waveformCanvas {
+    max-width: min(480px, 90vw);
+    width: 100% !important;
+    height: min(60px, 8vh) !important;
+    background-size: contain !important;
+    margin: 0 auto;
+}
+
+#soundwaveGame {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: min(20px, 3vh);
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.video-preview {
+    max-width: min(900px, 95vw);
+    width: 100%;
+    margin: 0 auto;
+    height: min(80vh, 600px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.video-preview video {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+/* Style pour le player d'enregistrement */
+.action-button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.recording-player .waveform {
+    width: min(320px, 80vw);
+    height: min(48px, 6vh);
+    flex-shrink: 0;
+}
+
+.recording-player audio {
+    flex: 1;
+    min-width: min(200px, 50vw);
+    background: #b3c7ff;
+    border-radius: 8px;
+}
+
+.recording-player button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: min(40px, 8vw);
+    height: min(40px, 8vw);
+    padding: min(8px, 1vw);
+    transition: transform 0.2s;
+    flex-shrink: 0;
+}
+
+.recording-player button:hover {
+    transform: scale(1.1);
+}
+
+.recording-player button.delete {
+    --button-color: #ff4f4f;
+}
+
+@keyframes moveWave {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: -100% 0;
+    }
+}
+
+.recording-visual {
+    display: flex;
+    flex-direction: column;
+}
+
+.wave-animation {
+    opacity: 0.7;
+    background-repeat: repeat-x !important;
+}
+
+.recording-player button.validate {
+    --button-color: #4ffca3;
+}
+
+.recording-player button.play {
+    --button-color: #4f8cff;
+}
+
+.recording-player button svg circle {
+    fill: var(--button-color);
+}
